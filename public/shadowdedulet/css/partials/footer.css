@@ -1,0 +1,99 @@
+.footer {
+    display: flex;
+
+    width: 100%;
+    height: 60px;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    background-color: #fff;
+
+    font-size: 14px;
+}
+
+.fcontainer {
+    display: flex;
+
+    width: 250px;
+    height: 100%;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.contacts {
+    justify-content: space-around;
+}
+
+.contact {
+    text-align: center;
+}
+
+.fcontainer p {
+    cursor: pointer;
+}
+
+#discordCopied {
+    display: flex;
+    position: absolute;
+
+    padding: 10px;
+    margin-left: -8px;
+
+    bottom: 65px;
+
+    border-radius: 5px;
+
+    background-color: #fff;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.languageIcon {
+    width: 12px;
+    height: 12px;
+
+    object-fit: cover;
+
+    margin-left: 5px;
+    margin-top: 3px;
+
+    border-radius: 50%;
+}
+
+.languageContainer {
+    display: flex;
+    position: absolute;
+
+    min-width: 100px;
+    min-height: 50px;
+
+    bottom: 65px;
+
+    flex-direction: column;
+    justify-content: center;
+
+    border-radius: 5px;
+
+    background-color: #fff;
+
+    pointer-events: none;
+
+    opacity: 0;
+}
+
+.languageName {
+    display: flex;
+
+    margin: 2px 0;
+    padding: 0 5px;
+
+    justify-content: center;
+}
+
+.languageName a {
+    min-width: 50px;
+}
