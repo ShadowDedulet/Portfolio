@@ -1,0 +1,17 @@
+<div id='signInContainer' class="signContainer">
+    <form id="signInForm" class='signForm'>
+        <input id='loginIn' class='login' type="text" placeholder="<%= SITE.login %>">
+        <input id='passwordIn' class='password' type="password" placeholder="<%= SITE.password %>">
+        <a class='forgot' href="/?language=<%= SITE.localeStr %>"><%= SITE.forgot %></a>
+        <button id='submitIn' class='submit' type="submit"><%= SITE.signIn %></button>
+    </form>
+</div>
+
+<div id='signUpContainer' class="signContainer">
+    <form id="signUpForm" class='signForm'>
+        <input id='loginUp' class='login' type="text" placeholder="<%= SITE.login %>">
+        <input id='passwordUp' class='password' type="password" placeholder="<%= SITE.password %>">
+        <input id='repeatPasswordUp' class='password' type="password" placeholder="<%= SITE.passwordRepeat %>">
+        <button id='submitUp' class='submit' type="submit"><%= SITE.signUp %></button>
+    </form>
+</div>

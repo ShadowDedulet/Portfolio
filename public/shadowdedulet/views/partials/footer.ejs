@@ -1,0 +1,40 @@
+<link rel="stylesheet" type="text/css" href="shadowdedulet/css/partials/footer.css">
+
+<div class="footer">
+    <div class="fcontainer">
+        <a href="/about?language=<%= SITE.localeStr %>"><%= SITE.aboutMe %></a>
+    </div>
+
+    <div class="fcontainer contacts">
+        <div class="contact">
+            <a href="https://github.com/shadowdedulet" target="blank">github</a>
+        </div>
+        <div class="contact">
+            <p id='discordBtn'>discord</p>
+            <p id='discordCopied'>copied</p>
+        </div>
+        <div class="contact">
+            <a href="https://vk.com/ijustwannabealone" target="blank">vk</a>
+        </div>
+        <div class="contact">
+            <a href="https://instagram.com/shadowdedulet" target="blank">instagram</a>
+        </div>
+    </div>
+
+    <div class="fcontainer" id='languageSelector'>
+        <p id='currentLanguage'><%= SITE.current %></p>
+        <img src="shadowdedulet/img/languages/eng.png" alt="K" class="languageIcon">
+
+        <div class="languageContainer" id='languageContainer'>
+            <div class="languageName">
+                <a href="<%- CUR_URL %>?language=en"><%= SITE.eng %></a>
+                <img src="shadowdedulet/img/languages/eng.png" alt="K" class="languageIcon">
+            </div>
+
+            <div class="languageName">
+                <a href="<%- CUR_URL %>?language=ru"><%= SITE.rus %></a>
+                <img src="shadowdedulet/img/languages/rus.png" alt="K" class="languageIcon">
+            </div>
+        </div>
+    </div>
+</div>

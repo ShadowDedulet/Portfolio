@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500&family=Montserrat:wght@100;200;300;400;500&display=swap');
+    </style>
+
+    <title>ShadowDedulet</title>
+    <link rel="icon" href="shadowdedulet/img/logo2.png">
+    <link rel="stylesheet" type="text/css" href="shadowdedulet/css/style.css">
+    <link rel="stylesheet" type="text/css" href="shadowdedulet/css/aboutme.css">
+    <script src="shadowdedulet/js/index.js" defer></script>
+</head>
+
+<body>
+    <%- include('partials/header.ejs', SITE, PARAMS) %>
+
+    <div id='content' class="content">
+        <div class="aboutme">
+            <% if (TEXT) { %>
+            <% for (let line of TEXT.aboutMeHeader) { %>
+            <p><%- line %> </p>
+            <% } %>
+            <ul>
+                <li>C++, Python, JavaScript, TypeScript</li>
+                <li>HTML, CSS, Markdown</li>
+                <li>SQL, T-SQL</li>
+                <li>Node.js, Express</li>
+                <li>Mongodb, SQL Server Management Studio</li>
+                <li>Git, Github, Travis CI, CircleCI</li>
+                <li>Adobe Photoshop</li>
+                <li>Windows 10, Arch Linux</li>
+            </ul>
+            <% for (let line of TEXT.aboutMeFooter) { %>
+            <p><%- line %> </p>
+            <% } %>
+            <% } else { %>
+            <p>No text to display</p>
+            <% } %>
+        </div>
+    </div>
+
+    <%- include('partials/footer.ejs', SITE, PARAMS) %>
+
+</body>
