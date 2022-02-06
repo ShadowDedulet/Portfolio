@@ -51,7 +51,7 @@ let Unshow = (object: HTMLElement, current: number) => {
 // Close opened window with 'esc' button
 
 document.addEventListener("keydown", (e) => {
-    if (e.key.toLowerCase() !== "escape") return;
+    if (e.key !== "Escape") return;
 
     if (openedWindow) {
         animate(500, Unshow, openedWindow, 0);
@@ -163,7 +163,7 @@ if (search)
             Array.prototype.slice.call(projects);
 
         // unhide all projects
-        projectsArr.forEach((project) => (project!.className = "project"));
+        projectsArr.forEach((project) => project!.classList.remove("project"));
 
         let hidden = projectsArr
             .map((project) => {
@@ -172,5 +172,99 @@ if (search)
             .filter(Boolean);
 
         // hide searched projects
-        hidden.forEach((project) => (project!.className += " hide"));
+        hidden.forEach((project) => project!.classList.add("hide"));
+    });
+
+// Sign validation rules
+
+let loginValidSymbols = /^[a-zA-Z0-9_]{6,20}$/g;
+let pswrdValidSymbols = /^[a-zA-Z0-9\_\-\+\=\?\!\ ]{6,20}$/g;
+
+let isValid = (element: HTMLInputElement, format: RegExp | string) => {
+    if (element.value.match(format)) return true;
+
+    element.classList.add("notValid");
+    return false;
+};
+
+// On sign form submit
+
+let signInForm = <HTMLFormElement>document.getElementById("signInForm");
+
+let signUpForm = <HTMLFormElement>document.getElementById("signUpForm");
+let loginUp = <HTMLInputElement>document.getElementById("loginUp");
+let pswrdUp = <HTMLInputElement>document.getElementById("passwordUp");
+let repeatPswrdUp = <HTMLInputElement>(
+    document.getElementById("repeatPasswordUp")
+);
+
+let submitInBtn = <HTMLButtonElement>document.getElementById("submitIn");
+
+// if (submitInBtn)
+//     submitInBtn.addEventListener("click", (e) => {
+//         // get inputs
+//         let loginIn = <HTMLInputElement>document.getElementById("loginIn");
+//         let pswrdIn = <HTMLInputElement>document.getElementById("passwordIn");
+
+//         if (!loginIn || !pswrdIn) return e.preventDefault();
+
+//         // Clear error message
+//         loginIn.classList.remove("notValid");
+//         pswrdIn.classList.remove("notValid");
+
+//         // check if data valid
+//         let isFormValid = true;
+//         isFormValid = isValid(loginIn, loginValidSymbols) && isFormValid;
+//         isFormValid = isValid(pswrdIn, pswrdValidSymbols) && isFormValid;
+
+//         if (!isFormValid) {
+//             e.preventDefault();
+//         }
+//     });
+
+if (submitInBtn)
+    submitInBtn.addEventListener("click", (e) => {
+        // rewrite form.submit to XMLHttpREsponse
+        e.preventDefault();
+
+        // get inputs
+        let loginIn = <HTMLInputElement>document.getElementById("loginIn");
+        let pswrdIn = <HTMLInputElement>document.getElementById("passwordIn");
+
+        if (!loginIn || !pswrdIn) return e.preventDefault();
+
+        // Clear error message
+        loginIn.classList.remove("notValid");
+        pswrdIn.classList.remove("notValid");
+
+        // check if data valid
+        let isFormValid = true;
+        isFormValid = isValid(loginIn, loginValidSymbols) && isFormValid;
+        isFormValid = isValid(pswrdIn, pswrdValidSymbols) && isFormValid;
+
+        if (!isFormValid) return;
+
+        // let formData = new FormData();
+        // formData.append("login", loginIn.value);
+        // formData.append("password", pswrdIn.value);
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:3000/signin");
+        xhr.setRequestHeader(
+            "Content-type",
+            // "application/x-www-form-urlencoded"
+            "application/json"
+        );
+
+        xhr.onload = function () {
+            // do something to response
+            console.log(this.responseText);
+        };
+
+        xhr.send(
+            JSON.stringify({
+                login: loginIn.value,
+                password: pswrdIn.value,
+            })
+        );
     });

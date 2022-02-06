@@ -2,7 +2,7 @@
 
 <div class="footer">
     <div class="fcontainer">
-        <a href="/about?language=<%= SITE.localeStr %>"><%= SITE.aboutMe %></a>
+        <a href="http://<%= URL.host %>/about?language=<%= SITE.localeStr %>"><%= SITE.aboutMe %></a>
     </div>
 
     <div class="fcontainer contacts">
@@ -27,12 +27,12 @@
 
         <div class="languageContainer" id='languageContainer'>
             <div class="languageName">
-                <a href="<%- CUR_URL %>?language=en"><%= SITE.eng %></a>
+                <a href="http://<%- URL.baseUrl %>?language=en"><%= SITE.eng %></a>
                 <img src="shadowdedulet/img/languages/eng.png" alt="K" class="languageIcon">
             </div>
 
             <div class="languageName">
-                <a href="<%- CUR_URL %>?language=ru"><%= SITE.rus %></a>
+                <a href="http://<%- URL.baseUrl %>?language=ru"><%= SITE.rus %></a>
                 <img src="shadowdedulet/img/languages/rus.png" alt="K" class="languageIcon">
             </div>
         </div>

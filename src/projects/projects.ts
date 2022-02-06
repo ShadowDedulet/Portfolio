@@ -7,7 +7,7 @@ type Project = {
     dateStr: string;
 };
 
-export let projects: Array<Project> = [
+const projects: Array<Project> = [
     {
         name: "Logicer",
         url: "https://bootyass.github.io/Logicer/",
@@ -27,3 +27,6 @@ export let projects: Array<Project> = [
         dateStr: "",
     },
 ];
+
+export type { Project };
+export default projects;

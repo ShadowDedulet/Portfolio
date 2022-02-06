@@ -1,96 +1,48 @@
+//      Import node modules
+
 import express from "express";
-import date from "date-and-time";
-import { projects } from "./src/projects/projects";
-import { elemDict, textDict } from "./src/languages/languages";
-import { params } from "./src/settings/params";
+import "dotenv/config";
 import { AddressInfo } from "net";
+import bodyParser from "body-parser";
 
-// Foos
+//      Import local
 
-let logger = (
-    req: express.Request,
-    res: express.Response,
-    next: express.NextFunction
-) => {
-    next();
-};
+import db from "./src/db/db";
 
-let getTranslatedElems = (req: express.Request) => {
-    let localeKey = "en"; // default language = english
-    if (req.query.language && req.query.language.toString() in elemDict)
-        localeKey = req.query.language.toString();
+//      Import routers
 
-    let translated = elemDict[localeKey];
-    date.locale(translated.locale);
-    return translated;
-};
+import router from "./src/routers/index";
+import aboutRouter from "./src/routers/about";
 
-let getTranslatedText = (req: express.Request) => {
-    let localeKey = "en"; // default language = english
-    if (req.query.language && req.query.language.toString() in textDict)
-        localeKey = req.query.language.toString();
+//      Local middlewares
 
-    let translated = textDict[localeKey];
-    date.locale(translated.locale[0]);
-    return translated;
-};
+import logger from "./src/middleware/logger";
 
-let getCurrentUrl = (_url: string) => {
-    return _url.match(/^.*(?=(\?))/g);
-};
-
-// Set properties
-
-let port: number = 3000;
+//      Set app properties
 
 const app = express();
 
+// views + static
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
+// middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 app.use(logger);
 
-// Set routes
+// routs
+app.use("/about", aboutRouter);
+app.use("/", router);
 
-app.get("/", (req, res) => {
-    let translated = getTranslatedElems(req);
+//      Connect to DB
 
-    if (projects)
-        projects.forEach(
-            (project) =>
-                (project.dateStr = date.format(project.date, translated.format))
-        );
+db.connect().then(() => db.setModels());
 
-    let _params = Object.assign({}, params);
-    _params.showProfile = true;
-    _params.showSearchBar = true;
+//      Run server
 
-    res.render(`${__dirname}/public/shadowdedulet/views/index`, {
-        SITE: translated,
-        PARAMS: _params,
-        CUR_URL: getCurrentUrl(req.url),
-        projects: projects,
-    });
-});
-
-app.get("/about", (req, res) => {
-    let translatedElems = getTranslatedElems(req);
-    let translatedText = getTranslatedText(req);
-
-    res.render(`${__dirname}/public/shadowdedulet/views/aboutMe`, {
-        SITE: translatedElems,
-        PARAMS: params,
-        CUR_URL: getCurrentUrl(req.url),
-        TEXT: {
-            aboutMeHeader: translatedText.aboutMeHeader,
-            aboutMeFooter: translatedText.aboutMeFooter,
-        },
-    });
-});
-
-// Listen
-
-let server = app.listen(port, () => {
+let server = app.listen(process.env.PORT_DEV, () => {
     let addrInfo = <AddressInfo>server.address();
     console.log(`listening on ${addrInfo.address}:${addrInfo.port}`);
 });
