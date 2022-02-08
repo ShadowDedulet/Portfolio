@@ -5,6 +5,7 @@ import projects from "../projects/projects";
 import params from "../settings/params";
 import functions from "../functions/functions";
 import authorizator from "./../middleware/authorizator";
+import authenticator from "./../middleware/authenticator";
 
 //
 
@@ -35,6 +36,8 @@ router.route("/").get((req, res, next) => {
     next();
 });
 
-router.route("/signin").post(authorizator, (req, res, next) => {});
+router
+    .route("/signin")
+    .post(authorizator, authenticator, (req, res, next) => {});
 
 export default router;
