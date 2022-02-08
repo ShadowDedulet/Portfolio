@@ -38,8 +38,13 @@ app.use("/", router);
 
 //      Connect to DB
 
-db.connect().then(() => db.setModels());
-
+try {
+    db.connect()
+        .then(() => db.setModels())
+        .then(() => db.insertExamples());
+} catch (err) {
+    console.log(err);
+}
 //      Run server
 
 let server = app.listen(process.env.PORT_DEV, () => {
