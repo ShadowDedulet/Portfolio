@@ -1,4 +1,6 @@
 <div class="hcontainer search">
+    <% if (PARAMS.showSearchBar) { %>
     <div class="circle"></div>
-    <input type="text" name="search" id="search" placeholder="<%= SITE.search %>">
+    <input type="text" name="search" id="search" placeholder="<%= LOC_ELEMENTS.search %>">
+    <% } %>
 </div>

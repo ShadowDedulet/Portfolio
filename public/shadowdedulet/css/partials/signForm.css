@@ -1,0 +1,95 @@
+.signContainer {
+    display: flex;
+    position: absolute;
+
+    width: 400px;
+    height: 300px;
+
+    top: 200px;
+    left: calc(50% - 200px);
+
+    background: linear-gradient(
+        287.56deg,
+        rgba(245, 186, 132, 1) 0%,
+        rgba(252, 93, 188, 1) 100%
+    );
+
+    border-radius: 5px;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    z-index: 10;
+}
+
+.signForm {
+    display: flex;
+    position: relative;
+
+    width: 386px;
+    height: 286px;
+
+    top: 7px;
+    left: 7px;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #fff;
+}
+
+.login,
+.password {
+    margin: 10px;
+    width: 70%;
+
+    font-size: 16px;
+    font-family: Montserrat;
+
+    text-align: center;
+
+    border: none;
+}
+
+.forgot {
+    font-size: 12px;
+
+    margin-top: 10px;
+}
+
+#repeatPasswordUp {
+    margin-bottom: -20px;
+}
+.submit {
+    margin-top: 50px;
+
+    font-size: 20px;
+    font-family: Montserrat;
+
+    cursor: pointer;
+
+    background-color: #fff;
+    border: none;
+}
+
+.login::placeholder,
+.password::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+
+    text-align: center;
+}
+
+.login:focus,
+.password:focus {
+    color: #000;
+
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.5); */
+
+    outline: none;
+}
+
+.notValid {
+    border-bottom: 2px solid #f44;
+}

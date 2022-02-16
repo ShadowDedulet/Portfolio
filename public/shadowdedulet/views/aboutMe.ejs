@@ -12,16 +12,21 @@
     <link rel="icon" href="shadowdedulet/img/logo2.png">
     <link rel="stylesheet" type="text/css" href="shadowdedulet/css/style.css">
     <link rel="stylesheet" type="text/css" href="shadowdedulet/css/aboutme.css">
-    <script src="shadowdedulet/js/index.js" defer></script>
+
+    <script id="md5" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+    <script id="mainScript" type="module" src="shadowdedulet/js/index.js" defer></script>
 </head>
 
 <body>
-    <%- include('partials/header.ejs', SITE, PARAMS) %>
+    <%- include('partials/header.ejs', LOC_ELEMENTS, LOCALE, URL, PARAMS) %>
+
+    <%- include('partials/messageTop.ejs', LOC_INFO) %>
+
+    <%- include('partials/signForm.ejs', LOC_ELEMENTS, LOCALE, URL) %>
 
     <div id='content' class="content">
         <div class="aboutme">
-            <% if (TEXT) { %>
-            <% for (let line of TEXT.aboutMeHeader) { %>
+            <% for (let line of LOC_TEXT.aboutMeHeader) { %>
             <p><%- line %> </p>
             <% } %>
             <ul>
@@ -34,15 +39,12 @@
                 <li>Adobe Photoshop</li>
                 <li>Windows 10, Arch Linux</li>
             </ul>
-            <% for (let line of TEXT.aboutMeFooter) { %>
+            <% for (let line of LOC_TEXT.aboutMeFooter) { %>
             <p><%- line %> </p>
-            <% } %>
-            <% } else { %>
-            <p>No text to display</p>
             <% } %>
         </div>
     </div>
 
-    <%- include('partials/footer.ejs', SITE, PARAMS) %>
+    <%- include('partials/footer.ejs', LOC_ELEMENTS, LOCALE, URL, PARAMS) %>
 
 </body>

@@ -1,17 +1,20 @@
+<link rel="stylesheet" type="text/css" href="shadowdedulet/css/partials/signForm.css">
+
 <div id="signInContainer" class="signContainer">
-    <form id="signInForm" class="signForm" method="post" action="http://<%= URL.host %>/signin?language=<%= SITE.localeStr %>">
-        <input id="loginIn" name="login" class="login" type="text" placeholder="<%= SITE.login %>">
-        <input id="passwordIn" name="password" class="password" type="password" placeholder="<%= SITE.password %>">
-        <a class="forgot" href="/?language=<%= SITE.localeStr %>"><%= SITE.forgot %></a>
-        <button id="submitIn" class="submit"><%= SITE.signIn %></button>
+    <form id="signInForm" class="signForm" autocomplete="off">
+        <input id="loginIn" name="login" class="login" type="text" placeholder="<%= LOC_ELEMENTS.login %> <%= LOC_ELEMENTS.or %> <%= LOC_ELEMENTS.email %>">
+        <input id="passwordIn" name="password" class="password" type="password" placeholder="<%= LOC_ELEMENTS.password %>">
+        <a class="forgot" href="/?language=<%= LOCALE %>"><%= LOC_ELEMENTS.forgot %></a>
+        <button id="submitIn" class="submit"><%= LOC_ELEMENTS.signIn %></button>
     </form>
 </div>
 
 <div id="signUpContainer" class="signContainer">
-    <form id="signUpForm" class="signForm" method="post" action="http://<%= URL.host %>/signup<%= SITE.localeStr %>">
-        <input id="loginUp" name="login" class="login" type="text" placeholder="<%= SITE.login %>">
-        <input id="passwordUp" name="password" class="password" type="password" placeholder="<%= SITE.password %>">
-        <input id="repeatPasswordUp" class="password" type="password" placeholder="<%= SITE.passwordRepeat %>">
-        <button id="submitUp" class="submit"><%= SITE.signUp %></button>
+    <form id="signUpForm" class="signForm" autocomplete="off">
+        <input id="loginUp" name="login" class="login" type="text" placeholder="<%= LOC_ELEMENTS.login %>">
+        <input id="emailUp" name="email" class="login" type="text" placeholder="<%= LOC_ELEMENTS.email %>">
+        <input id="passwordUp" name="password" class="password" type="password" placeholder="<%= LOC_ELEMENTS.password %>">
+        <input id="repeatPasswordUp" class="password" type="password" placeholder="<%= LOC_ELEMENTS.passwordRepeat %>">
+        <button id="submitUp" class="submit"><%= LOC_ELEMENTS.signUp %></button>
     </form>
 </div>

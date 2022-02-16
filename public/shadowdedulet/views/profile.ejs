@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500&family=Montserrat:wght@100;200;300;400;500&display=swap');
+    </style>
+
+    <title><%= USER.login %></title>
+    <link rel="icon" href="shadowdedulet/img/logo2.png">
+    <link rel="stylesheet" type="text/css" href="shadowdedulet/css/style.css">
+
+    <script id="mainScript" type="module" src="shadowdedulet/js/index.js" defer></script>
+</head>
+
+<body>
+    <p><%= LOC_ELEMENTS.login %>: <%= USER.login %></p>
+    <p><%= LOC_ELEMENTS.email %>: <%= USER.email %></p>
+    <p><%= LOC_ELEMENTS.role %>: <%= USER.role.name %></p>
+    <p><%= LOC_ELEMENTS.createdAt %>: <%= USER.createdAtStr %></p>
+</body>

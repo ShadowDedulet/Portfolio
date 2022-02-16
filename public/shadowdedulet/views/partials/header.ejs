@@ -1,16 +1,23 @@
 <link rel="stylesheet" type="text/css" href="shadowdedulet/css/partials/header.css">
 
 <nav>
-    <% if (PARAMS.showSearchBar) { %>
-    <%- include('searchbar.ejs', SITE) %>
-    <% } %>
+    <%- include("searchbar.ejs", LOC_ELEMENTS, PARAMS) %>
 
     <div class="hcontainer name">
-        <a href="http://<%= URL.host %>/?language=<%= SITE.localeStr %>">shadowdedulet.</a>
+        <a href="//<%= URL.host %>/?language=<%= LOCALE %>">shadowdedulet.</a>
     </div>
 
-    <% if (PARAMS.showProfile) { %>
-    <%- include('profile.ejs', SITE) %>
-    <% } %>
-
+    <div class="hcontainer profile">
+        <div class="hcontainer sign">
+            <% if (PARAMS.showSign) { %>
+            <div id="signInBtn" class="signBtn"><%= LOC_ELEMENTS.signIn %></div>
+            <div id="signUpBtn" class="signBtn"><%= LOC_ELEMENTS.signUp %></div>
+            <% } else if (PARAMS.showProfile){ %>
+            <a id="profile" class="profile" href="//<%= URL.host %>/profile?language=<%= LOCALE %>" target="_self">
+                <img src="shadowdedulet/img/profilePic.png" alt="<%= LOC_ELEMENTS.account %>">
+            </a>
+            <div id="logout" class="signBtn"><%= LOC_ELEMENTS.logout %></div>
+            <% } %>
+        </div>
+    </div>
 </nav>
