@@ -1,5 +1,8 @@
 node_modules/*
+test/*
 *.js
-.env
+*.env
 *.rest
 *.todo
+*.temp
+*.rest
