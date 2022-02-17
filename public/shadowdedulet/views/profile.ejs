@@ -16,8 +16,18 @@
 </head>
 
 <body>
-    <p><%= LOC_ELEMENTS.login %>: <%= USER.login %></p>
-    <p><%= LOC_ELEMENTS.email %>: <%= USER.email %></p>
-    <p><%= LOC_ELEMENTS.role %>: <%= USER.role.name %></p>
-    <p><%= LOC_ELEMENTS.createdAt %>: <%= USER.createdAtStr %></p>
+    <%- include('partials/header.ejs', LOC_ELEMENTS, LOCALE, URL, PARAMS) %>
+
+    <%- include('partials/messageTop.ejs', LOC_INFO) %>
+
+    <div id="content" class="content content-profile">
+
+        <p><%= LOC_ELEMENTS.login %>: <%= USER.login %></p>
+        <p><%= LOC_ELEMENTS.email %>: <%= USER.email %></p>
+        <p><%= LOC_ELEMENTS.role %>: <%= USER.role.name %></p>
+        <p><%= LOC_ELEMENTS.createdAt %>: <%= USER.createdAtStr %></p>
+
+    </div>
+
+    <%- include('partials/footer.ejs', LOC_ELEMENTS, LOCALE, URL, PARAMS) %>
 </body>

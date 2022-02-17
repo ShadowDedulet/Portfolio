@@ -37,10 +37,17 @@ a {
 
     margin: 0 auto;
     padding-top: 100px;
+}
 
+.content-index {
     justify-content: flex-start;
     flex-basis: 33.3%;
     flex-wrap: wrap;
+}
+
+.content-profile {
+    justify-content: center;
+    flex-direction: column;
 }
 
 .project {

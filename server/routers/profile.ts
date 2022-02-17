@@ -1,6 +1,7 @@
 import express from "express";
 //
 import foos from "../functions/functions";
+import params from "../settings/params";
 //
 
 import jwtAuthorizator from "../middleware/jwtAuthorizator";
@@ -18,6 +19,8 @@ router.route("/").get(jwtAuthorizator, (req, res, _next) => {
         req.body.DATE_FORMAT
     );
 
+    let _params = Object.assign({}, params); // all hiden
+
     res.status(200).render(
         `${__dirname}/../../public/shadowdedulet/views/profile`,
         {
@@ -26,6 +29,7 @@ router.route("/").get(jwtAuthorizator, (req, res, _next) => {
             LOC_INFO: req.body.LOC_INFO,
             LOCALE: req.body.LOCALE,
 
+            PARAMS: _params,
             URL: {
                 url: req.headers.host + req.baseUrl + req.path,
                 baseUrl: req.headers.host + req.baseUrl,

@@ -8,11 +8,12 @@ I started this project at January 30, 2022.
 
 ## What am I using?
 
--   Code is written in `TypeScript` then rendered to `JavaScript` for browser support (mb change later).
--   For server I use `Node.js`, `Express`.
--   View engine is `ejs`.
--   User's data stored in `MongoDB`.
--   For date I use `date-and-time` npm package.
+-   Src in `Typescript`, compiled to `Javascript`.
+-   Server - `Node.js`, `Express`.
+-   View engine - `ejs`.
+-   DB - `MongoDB` and `mongoose`.
+-   Date & format - `date-and-time`.
+-   E-mail - `nodemailer`.
 
 ## In progress...
 

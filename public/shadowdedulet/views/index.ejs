@@ -23,7 +23,7 @@
 
     <%- include('partials/signForm.ejs', LOC_ELEMENTS, LOCALE, URL) %>
 
-    <div id='content' class="content">
+    <div id='content' class="content content-index">
         <% for (let project of PROJECTS) { %>
         <div class="project" id=<%= project.name.toLowerCase() %>>
             <div class="project-preview"></div>

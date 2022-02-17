@@ -62,10 +62,15 @@ router.route("/sign").post((_req, res, _next) => {
 });
 
 router.route("/signin").post(authorizator, authenticator, (req, res, _next) => {
-    let token = foos.generateJWT(req.body.login, req.body.device);
-    let expDate = new Date();
-    expDate.setDate(expDate.getDate() + 1);
-    res.cookie("token", token, { maxAge: expDate.getTime() });
+    let token: string;
+    if (req.body.jwtdata) {
+        token = req.cookies.token;
+    } else {
+        token = foos.generateJWT(req.body.login, req.body.device);
+        let expDate = new Date();
+        expDate.setDate(expDate.getDate() + 1);
+        res.cookie("token", token, { maxAge: expDate.getTime() });
+    }
 
     res.status(200).json({
         info: req.body.LOC_INFO[200].signin,
